@@ -1,32 +1,36 @@
-<div class="container-fluid">
+<div class="container mt-4">
   <div class="row">
 
-    <div class="col">
+    <div class="col-md-8">
+      <h2 class="mb-3">{{ animeDetail.name }}</h2>
+
       <dl>
-        <p class="h3">{{ animeDetail.name }}</p>
-        <dt class="bold">Description</dt>
+        <dt class="fw-bold">Descripción</dt>
         <dd>{{ animeDetail.description }}</dd>
         <hr />
-        <dt>Rating ⭐</dt>
-        <dd>{{ animeDetail.Rating }}</dd>
+        
+        <dt class="fw-bold">⭐ Rating promedio</dt>
+        <dd>{{ getAverageRating(animeDetail) }}</dd>
         <hr />
-        <dt>Studio</dt>
+        
+        <dt class="fw-bold">Estudio</dt>
         <dd>{{ animeDetail.studio }}</dd>
         <hr />
-        <dt class="bold">Number of episodes</dt>
-        <dd class="caption">{{ animeDetail.total_episodes }}</dd>
+        
+        <dt class="fw-bold">Total de episodios</dt>
+        <dd>{{ animeDetail.total_episodes }}</dd>
         <hr />
-
       </dl>
+
+      <button class="btn btn-secondary" (click)="goBack()">Volver</button>
     </div>
-    <div class="col-3">
-      <div class="thumb">
-        <img
-          class="img-fluid"
-          src="{{ animeDetail.img }}"
-          alt="{{ animeDetail.name }}"
-        />
-      </div>
+
+    <div class="col-md-4">
+      <img
+        class="img-fluid rounded shadow"
+        [src]="animeDetail.img"
+        [alt]="animeDetail.name"
+      />
     </div>
   </div>
- </div>
+</div>

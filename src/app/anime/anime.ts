@@ -1,4 +1,5 @@
 export class Anime {
+  [x: string]: any;
   id: number;
   name: string;
   description: string;
@@ -7,6 +8,8 @@ export class Anime {
   categorie: string;
   studio: string;
   img: string;
+  ratings: number[] = [];    
+  seasons: Season[] = [];     
 
   constructor(
     id: number,
@@ -26,5 +29,16 @@ export class Anime {
     this.categorie= categorie,
     this.studio= studio,
     this.img = img;
+    this.ratings = [],
+    this.seasons = []
   }
  }
+ export class Season {
+  name: string;
+  episodes: string[];
+
+  constructor(name: string, episodes: string[]) {
+    this.name = name;
+    this.episodes = episodes;
+  }
+}

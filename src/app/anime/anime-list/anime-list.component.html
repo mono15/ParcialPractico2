@@ -1,21 +1,35 @@
-  <br>
-  <div class="container contenedor-animes">
-  <div class="row">
-    <!-- COMPLETAR CON EL LLAMADO A UNA FUNCIÓN PROPIA QUE CALCULE EL RATING PROMEDIO -->
-    <p>El rating promedio es <span class="badge text-bg-primary rounded-pill"> 7.99 </span></p>
-    <div *ngIf="selected">
-      <app-anime-detail [animeDetail]="selectedBAnime"></app-anime-detail>
-      <hr>
-    </div>
-    <div class="col-4" *ngFor="let anime of animes">
-        <p>{{anime.name}}</p>
-        <img src={{anime.img}}  alt="anime image" width=50px>
-        <p>⭐{{anime.Rating}} <b>Categories: </b>{{anime.categorie}}</p>
-        <!-- COMPLETAR PARA INCLUIR LA CANTIDAD DE TEMPORADAS -->
-        <p class="card-text"><b># seasons: </b>"COMPLETAR"</p>
-        <a href="#" (click)="onSelected(anime)">More information</a>
-        <hr>
-   </div>
+<div class="container mt-4 contenedor-animes">
+  <p class="mb-4 h5">
+    Rating promedio global: 
+    <span class="badge text-bg-primary rounded-pill">
+      {{ getGlobalAverageRating() }}
+    </span>
+  </p>
 
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let anime of animes">
+      <div class="card h-100">
+        <img [src]="anime.img" class="card-img-top" alt="Anime image">
+        
+        <div class="card-body">
+          <h5 class="card-title">{{ anime.name }}</h5>
+          <p class="card-text">
+            ⭐ <b>Promedio:</b> {{ getAverageRating(anime) }}
+          </p>
+          <p class="card-text">
+            <b>Categoría:</b> {{ anime.categorie }}
+          </p>
+          <p class="card-text">
+            <b># Temporadas:</b> {{ getSeasonsCount(anime) }}
+          </p>
+        </div>
+
+        <div class="card-footer text-center">
+          <a [routerLink]="['/anime', anime.id]" class="btn btn-primary btn-sm">
+            More Information
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
